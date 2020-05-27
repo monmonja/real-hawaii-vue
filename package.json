@@ -1,0 +1,29 @@
+{
+  "name": "real-hawaii-vue",
+  "version": "0.0.1",
+  "description": "Vue Widgets and mixins used in RealHawaii.co",
+  "author": "Almond Joseph Mendoza",
+  "license": "MIT",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monmonja/real-hawaii-vue"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "vue",
+    "real hawaii"
+  ],
+  "scripts": {
+    "dev": "node examples/server.js"
+  },
+  "devDependencies": {
+    "vue": "^2.5.16"
+  },
+  "bugs": {
+    "url": "https://github.com/monmonja/real-hawaii-vue/issues"
+  },
+  "homepage": "https://realhawaii.co/"
+}
