@@ -23,41 +23,50 @@
   </ul>
 </template>
 
-<script >
+<script lang="ts">
   /**
    * <pagination :current-page="currentPage" :last-page="lastPage" url="/admin/users" :goto-page="getAllUsers"></pagination>
    */
-  export default {
-    props: {
-      paddingCount: {
-        type: Number,
-        default: 2
-      },
-      currentPage: {
-        type: Number,
-        required: true,
-        default: 1
-      },
-      lastPage: {
-        type: Number,
-        required: true
-      },
-      url: {
-        type: String,
-        required: true
-      },
-      gotoPage: {
-        type: Function,
-        required: true
-      }
-    },
-    computed: {
-      pagesInMiddle () {
-        let start = Math.max(this.currentPage - this.paddingCount, 1);
-        let end = Math.min(this.currentPage + this.paddingCount, this.lastPage);
-        return  Array(end - start + 1).fill().map((_, idx) => start + idx);
-      }
-    }
+  import {Component} from "vue-property-decorator";
+  import Vue from "vue";
+
+  @Component({
+    name: 'Pagination'
+  })
+  export default class Pagination extends Vue {
+
   }
+  // export default {
+  //   props: {
+  //     paddingCount: {
+  //       type: Number,
+  //       default: 2
+  //     },
+  //     currentPage: {
+  //       type: Number,
+  //       required: true,
+  //       default: 1
+  //     },
+  //     lastPage: {
+  //       type: Number,
+  //       required: true
+  //     },
+  //     url: {
+  //       type: String,
+  //       required: true
+  //     },
+  //     gotoPage: {
+  //       type: Function,
+  //       required: true
+  //     }
+  //   },
+  //   computed: {
+  //     pagesInMiddle () {
+  //       let start = Math.max(this.currentPage - this.paddingCount, 1);
+  //       let end = Math.min(this.currentPage + this.paddingCount, this.lastPage);
+  //       return  Array(end - start + 1).fill().map((_, idx) => start + idx);
+  //     }
+  //   }
+  // }
 </script>
 
