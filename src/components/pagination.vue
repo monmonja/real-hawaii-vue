@@ -27,39 +27,27 @@
   /**
    * <pagination :current-page="currentPage" :last-page="lastPage" url="/admin/users" :goto-page="getAllUsers"></pagination>
    */
-  import {Component} from "vue-property-decorator";
+  import {Component, Prop} from "vue-property-decorator";
   import Vue from "vue";
 
   @Component({
     name: 'Pagination'
   })
   export default class Pagination extends Vue {
+    @Prop({ default: 2 }) readonly paddingCount:number
+    @Prop({ default: 1, required: true }) readonly currentPage:number
+    @Prop({ default: 1 }) readonly lastPage:number
+    @Prop() readonly url:number
+    @Prop() readonly gotoPage:Function
 
+    get pagesInMiddle(): Array<number> {
+      let start = Math.max(this.currentPage - this.paddingCount, 1);
+      let end = Math.min(this.currentPage + this.paddingCount, this.lastPage);
+      return  Array(end - start + 1).fill(1).map((_, idx) => start + idx);
+    }
   }
   // export default {
-  //   props: {
-  //     paddingCount: {
-  //       type: Number,
-  //       default: 2
-  //     },
-  //     currentPage: {
-  //       type: Number,
-  //       required: true,
-  //       default: 1
-  //     },
-  //     lastPage: {
-  //       type: Number,
-  //       required: true
-  //     },
-  //     url: {
-  //       type: String,
-  //       required: true
-  //     },
-  //     gotoPage: {
-  //       type: Function,
-  //       required: true
-  //     }
-  //   },
+
   //   computed: {
   //     pagesInMiddle () {
   //       let start = Math.max(this.currentPage - this.paddingCount, 1);
